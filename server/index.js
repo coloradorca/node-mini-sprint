@@ -38,7 +38,7 @@ const handleRequest = function(req, res) {
 
   // TODO: GET ONE
   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
-    
+
     console.log("get method received to server")
 
     res.writeHead(200, {...headers})
@@ -48,9 +48,9 @@ const handleRequest = function(req, res) {
   }
   // TODO: POST/CREATE
   else if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST") {
-    
+
     console.log("post method correct from server");
-    
+
     var rawdata = '';
 
     req.on('data', (chunk) => {
@@ -61,7 +61,8 @@ const handleRequest = function(req, res) {
       res.writeHead(201, {...headers})
       quotes.push(rawdata);
       console.log(rawdata);
-      res.end();
+      // res.end();
+      res.end(rawdata);
     });
   }
 

@@ -10,7 +10,6 @@ $(document).ready(function() {
     e.preventDefault();
     let quote = $('input').val();
     addQuote(quote);
-    // console.log(quote)
   });
 
   function getQuote(){
@@ -21,12 +20,9 @@ $(document).ready(function() {
   }
 
   function addQuote(quote){
-    console.log('qote in main.js', quote)
-    // $.post('http://localhost:3000/quote', {quote} , function(data){
-    //   console.log(data);
-    // }, 'json')
+    console.log('quote in main.js', quote)
 
-    //YOUR CODE HERE, Add a POST request
+    // $("from")[0].reset() reset input field
     $.ajax({
       type: "POST",
       data: quote,
