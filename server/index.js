@@ -48,13 +48,21 @@ const handleRequest = function(req, res) {
   }
   // TODO: POST/CREATE
   else if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST") {
-    console.log("post method correct from server");
-    // console.log(req)
-
-    //take data from user's input(post call)
     
+    console.log("post method correct from server");
+    
+    var rawdata = '';
 
-    //push post data to quote array
+    req.on('data', (chunk) => {
+      rawdata += chunk;
+    });
+
+    req.on('end', function (){
+      res.writeHead(201, {...headers})
+      quotes.push(rawdata);
+      console.log(rawdata);
+      res.end();
+    });
   }
 
 //CATCH ALL ROUTE

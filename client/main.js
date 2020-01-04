@@ -22,18 +22,19 @@ $(document).ready(function() {
 
   function addQuote(quote){
     console.log('qote in main.js', quote)
-    $.post('http://localhost:3000/quote', {'input': quote } , function(data){
-      
-    }, "json")
+    // $.post('http://localhost:3000/quote', {quote} , function(data){
+    //   console.log(data);
+    // }, 'json')
 
     //YOUR CODE HERE, Add a POST request
-    // $.ajax({
-    //   type: "POST",
-    //   data: quote,
-    //   url: 'http://localhost:3000',
-    //   success: console.log("post request sent"),
-    //   // error: console.log("get request failed")
-    // })
+    $.ajax({
+      type: "POST",
+      data: quote,
+      dataType: 'json',
+      url: 'http://localhost:3000/quote',
+      success: console.log("post request sent"),
+      // error: console.log("get request failed")
+    })
 
   }
 });
