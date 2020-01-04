@@ -10,25 +10,10 @@ $(document).ready(function() {
     e.preventDefault();
     let quote = $('input').val();
     addQuote(quote);
-    
+    // console.log(quote)
   });
 
   function getQuote(){
-
-    //YOUR CODE HERE, Add a GET request 
-    // var getObj = $.ajax({
-    //   type: "GET",
-    //   data: {1: this.responseText},
-    //   url: 'http://localhost:3000',
-    //   success: console.log("get request sent"),
-    // })
-    // // console.log($.ajax({
-    // //   type: "GET",
-    // //   url: 'http://localhost:3000',
-    // //   success: console.log("get request sent"),
-    // // }))
-    // console.log()
-    // $('body').append()
 
     $.get('http://localhost:3000', function(data){
       $('#quote').text(data);
@@ -36,15 +21,19 @@ $(document).ready(function() {
   }
 
   function addQuote(quote){
-    
+    console.log('qote in main.js', quote)
+    $.post('http://localhost:3000/quote', {'input': quote } , function(data){
+      
+    }, "json")
+
     //YOUR CODE HERE, Add a POST request
-    $.ajax({
-      type: "POST",
-      data: quote,
-      url: 'http://localhost:3000',
-      success: console.log("post request sent"),
-      // error: console.log("get request failed")
-    })
+    // $.ajax({
+    //   type: "POST",
+    //   data: quote,
+    //   url: 'http://localhost:3000',
+    //   success: console.log("post request sent"),
+    //   // error: console.log("get request failed")
+    // })
 
   }
 });

@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 }
 
 const handleRequest = function(req, res) {
-  console.log(`Endpoint: ${req.url} Method: ${req.method} Res: ${res}`);
+  console.log(`Endpoint: ${req.url} Method: ${req.method}`);
 
   // redirect users to /quote if they try to hit the homepage. This should already work, no changes needed
   if (req.url == '/') {
@@ -38,20 +38,23 @@ const handleRequest = function(req, res) {
 
   // TODO: GET ONE
   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
-    //YOUR CODE HERE
+    
     console.log("get method received to server")
 
     res.writeHead(200, {...headers})
     res.end(quotes[getRandomInt(0,quotes.length-1)]);
 
-    // req.response(quotes)
 
   }
   // TODO: POST/CREATE
-  
-  else if ((req.url == 'quote' || req.url == '/quote') && req.method == "POST") {
-    //YOUR CODE HERE
-    console.log("post method correct from server")
+  else if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST") {
+    console.log("post method correct from server");
+    // console.log(req)
+
+    //take data from user's input(post call)
+    
+
+    //push post data to quote array
   }
 
 //CATCH ALL ROUTE
